@@ -16,12 +16,12 @@ function Api(port, routes) {
       this._registerRoutes();
 
       console.info(`Api live in 0.0.0.0:${port}`);
-
-      resolve(app);
     }
     catch(e) {
       reject(e);
     }
+
+    resolve(app);    
   });
 
   this._registerRoutes = () => {
