@@ -25,7 +25,9 @@ function Api(port, routes) {
   });
 
   this._registerRoutes = () => {
-    console.log('si');
+    routes.forEach(route => {
+      this._router[route.method.toLowerCase()](route.url, route.action);
+    });
   }
 }
 

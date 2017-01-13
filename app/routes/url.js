@@ -4,6 +4,6 @@ module.exports = [
   {
     method: 'GET',
     url: '/urls',
-    action: UrlController
+    action: UrlController.get
   }
 ];
