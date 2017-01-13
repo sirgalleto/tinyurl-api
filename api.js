@@ -13,9 +13,9 @@ function Api(port, routes) {
   this.start = () => new Promise((resolve, reject) => {
     try {
       app.listen(port);
-      console.info(`Api live in 0.0.0.0:${port}`);
-
       this._registerRoutes();
+
+      console.info(`Api live in 0.0.0.0:${port}`);
 
       resolve(app);
     }
