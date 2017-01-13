@@ -14,8 +14,10 @@ let UrlController = {
   },
   find: (req, res) => {
 
-    Url.find(req.params.id);
-    res.send('finding');
+    Url.findById(req.params.id)
+    .then((url) => {
+      res.json(url);
+    });
   },
   create: (req, res) => {
 
@@ -40,7 +42,10 @@ let UrlController = {
     });
   },
   delete: (req, res) => {
-    res.send('deleting');
+    Url.remove(req.params.id)
+    .then((data) => {
+      res.json({success: true});
+    })
   }
 };
 

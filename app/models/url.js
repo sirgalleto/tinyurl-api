@@ -24,7 +24,7 @@ function UrlModel () {
   }
 
   UrlSchema.statics.findById = function(id) {
-    return this.findById(id);
+    return this.findOne({_id: id});
   }
 
   UrlSchema.statics.insert = function(url) {
@@ -33,15 +33,18 @@ function UrlModel () {
 
   UrlSchema.statics.update = function(id, newUrl) {
     return this.findOne({_id: id})
-              .then((url) => {
-                Object.assign(url, newUrl);
+    .then((url) => {
+      Object.assign(url, newUrl);
 
-                return url.save();
-              });
+      return url.save();
+    });
   }
 
-  UrlSchema.statics.remove = function() {
-
+  UrlSchema.statics.remove = function(id) {
+    return this.findOneAndRemove({_id: id})
+    .then(() => {
+      return false;
+    });
   }
 
   return UrlSchema;
