@@ -10,7 +10,6 @@ const routes = [
 
 let api = new Api(port, routes);
 
-
 api.start()
 .then(() => {
   mongoose.connect('mongodb://tinyapi:abc.123@ds163758.mlab.com:63758/tinyurl');
