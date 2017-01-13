@@ -1,4 +1,5 @@
 let mongoose  = require('mongoose')
+,   bluebird  = require('bluebird')
 ,   Api       = require('./api')
 ,   urlRoutes = require('./app/routes/url');
 
@@ -12,7 +13,12 @@ let api = new Api(port, routes);
 
 api.start()
 .then(() => {
-  mongoose.connect('mongodb://tinyapi:abc.123@ds163758.mlab.com:63758/tinyurl');
+  let options = { promiseLibrary: bluebird };
+
+  mongoose.connect(
+    'mongodb://tinyapi:abc.123@ds163758.mlab.com:63758/tinyurl',
+    options
+  );
 })
 .catch((e) => {
   console.error(e);
