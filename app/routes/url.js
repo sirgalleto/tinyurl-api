@@ -4,6 +4,26 @@ module.exports = [
   {
     method: 'GET',
     url: '/urls',
-    action: UrlController.get
+    action: UrlController.list
+  },
+  {
+    method: 'GET',
+    url: '/urls/:id',
+    action: UrlController.find
+  },
+  {
+    method: 'POST',
+    url: '/urls',
+    action: UrlController.create
+  },
+  {
+    method: 'PUT',
+    url: '/urls/:id',
+    action: UrlController.update
+  },
+  {
+    method: 'DELETE',
+    url: '/urls/:id',
+    action: UrlController.delete
   }
 ];
