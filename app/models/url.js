@@ -1,12 +1,14 @@
-let mongoose  = require('mongoose')
+let mongoose    = require('mongoose')
+,   mongooseUrl = require('mongoose-type-url')
 ,   Schema    = mongoose.Schema;
+
 
 function UrlModel () {
 
   let UrlSchema = new Schema({
     name: {
-      type: String,
-      required: true
+      type: mongoose.SchemaTypes.Url,
+      required: true,
     },
     short: {
       type: String,

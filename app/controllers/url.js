@@ -2,53 +2,43 @@ let Url   = require('../models/url')
 ,   View  = require ('../views')
 ,   uid   = require('../scripts/uid');
 
+
 let UrlController = {
   list: (req, res) => {
-    Url.list().then((result) => {
-
-      res.json({
-        data: result
-      });
-    });
+    View.json.promise(
+      Url.list(), res
+    );
   },
   find: (req, res) => {
-
-    Url.findById(req.params.id)
-    .then((url) => {
-      res.json(url);
-    });
+    View.json.promise(
+      Url.findById(req.params.id), res
+    );
   },
   create: (req, res) => {
-    const { name } = req.body;
-
     const url = new Url({
-      name: name,
+      name: req.body.name,
       clicks: 0,
       short: uid()
     });
 
-    Url.insert(url)
-    .then((_url) => {
-      res.json(_url);
-    });
+    View.json.promise(
+      Url.insert(url), res
+    );
   },
   update: (req, res) => {
-    Url.update(req.params.id, req.body)
-    .then((data) => {
-      res.json(data);
-    });
+    View.json.promise(
+      Url.update(req.params.id, req.body), res
+    );
   },
   delete: (req, res) => {
-    Url.remove(req.params.id)
-    .then((data) => {
-      res.json({success: true});
-    })
+    View.json.promise(
+      Url.remove(req.params.id), res
+    );
   },
   findByShort: (req, res) => {
-    Url.findByShort(req.params.short)
-    .then((url) => {
-      res.json({url});
-    });
+    View.json.promise(
+      Url.findByShort(req.params.short), res
+    );
   }
 };
 
