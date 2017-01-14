@@ -1,7 +1,6 @@
-let Url = require('../models/url')
-,   uid = require('../scripts/uid');
-
-// TestId 58792220319cd68a429330eb
+let Url   = require('../models/url')
+,   View  = require ('../views')
+,   uid   = require('../scripts/uid');
 
 let UrlController = {
   list: (req, res) => {
@@ -20,7 +19,6 @@ let UrlController = {
     });
   },
   create: (req, res) => {
-
     const { name } = req.body;
 
     const url = new Url({
@@ -31,7 +29,6 @@ let UrlController = {
 
     Url.insert(url)
     .then((_url) => {
-      console.log(_url);
       res.json(_url);
     });
   },
@@ -46,6 +43,12 @@ let UrlController = {
     .then((data) => {
       res.json({success: true});
     })
+  },
+  findByShort: (req, res) => {
+    Url.findByShort(req.params.short)
+    .then((url) => {
+      res.json({url});
+    });
   }
 };
 
