@@ -47,6 +47,14 @@ function UrlModel () {
     });
   }
 
+  UrlSchema.statics.findByShort = function(short) {
+    return this.findOne({short: short})
+    .then((url) => {
+      url.clicks++;
+      return url.save();
+    });
+  }
+
   return UrlSchema;
 }
 

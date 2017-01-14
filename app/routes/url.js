@@ -25,5 +25,10 @@ module.exports = [
     method: 'DELETE',
     url: '/urls/:id',
     action: UrlController.delete
+  },
+  {
+    method: 'GET',
+    url: '/urls/findByShort/:short',
+    action: UrlController.findByShort
   }
 ];
