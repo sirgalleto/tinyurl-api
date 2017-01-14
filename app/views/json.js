@@ -18,4 +18,4 @@ let json = {
   }
 };
 
-module.exports = JSON;
+module.exports = json;
