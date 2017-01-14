@@ -37,7 +37,7 @@ let UrlController = {
   findByShort: (req, res) => {
     View.json.promise(
       Url.findByShort(req.params.short), res
-    ());
+    );
   }
 };
 
