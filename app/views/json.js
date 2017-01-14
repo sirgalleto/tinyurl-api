@@ -10,7 +10,9 @@ let json = {
       })
     })
     .catch((error) => {
-      res.status(500).json({
+      res.status(error.status || 500);
+
+      res.json({
         success: false,
         error: error
       });
