@@ -2,7 +2,6 @@ let Url   = require('../models/url')
 ,   View  = require ('../views')
 ,   uid   = require('../scripts/uid');
 
-
 let UrlController = {
   list: (req, res) => {
     View.json.promise(
@@ -38,7 +37,7 @@ let UrlController = {
   findByShort: (req, res) => {
     View.json.promise(
       Url.findByShort(req.params.short), res
-    );
+    ());
   }
 };
 
