@@ -14,14 +14,23 @@ let UrlController = {
     );
   },
   create: (req, res) => {
-    const url = new Url({
-      name: req.body.name,
-      clicks: 0,
-      short: uid()
-    });
+
+    const { name } = req.body;
 
     View.json.promise(
-      Url.insert(url), res
+      Url.findByName(name)
+      .then((url)=> {
+        if(url) return url;
+
+        const _url = new Url({
+          name: name,
+          clicks: 0,
+          short: uid()
+        });
+
+        return Url.insert(_url);
+      }),
+      res
     );
   },
   update: (req, res) => {

@@ -49,6 +49,11 @@ function UrlModel () {
     });
   }
 
+  UrlSchema.statics.findByName = function(name) {
+    console.log(name);
+    return this.findOne({name: name});
+  }
+
   UrlSchema.statics.findByShort = function(short) {
     return this.findOne({short: short})
     .then((url) => {
