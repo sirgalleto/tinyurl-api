@@ -47,4 +47,4 @@ jspm_packages
 .yarn-integrity
 
 # ENV
-ENV.js
+env.js
