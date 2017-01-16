@@ -1,7 +1,8 @@
 let mongoose  = require('mongoose')
 ,   bluebird  = require('bluebird')
 ,   Api       = require('./api')
-,   urlRoutes = require('./app/routes/url');
+,   urlRoutes = require('./app/routes/url')
+,   env       = require('.env');
 
 const port = process.env.PORT || 8080;
 
@@ -16,7 +17,7 @@ api.start()
   let options = { promiseLibrary: bluebird };
 
   mongoose.connect(
-    'mongodb://tinyapi:abc.123@ds163758.mlab.com:63758/tinyurl',
+    env.MONGO_CREDENTIALS,
     options
   );
 })
