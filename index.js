@@ -1,8 +1,7 @@
 let mongoose  = require('mongoose')
-,   bluebird  = require('bluebird')
 ,   Api       = require('./api')
 ,   urlRoutes = require('./app/routes/url')
-,   env       = require('.env');
+,   env       = require('./env');
 
 const port = process.env.PORT || 8080;
 
@@ -14,11 +13,8 @@ let api = new Api(port, routes);
 
 api.start()
 .then(() => {
-  let options = { promiseLibrary: bluebird };
-
   mongoose.connect(
-    env.MONGO_CREDENTIALS,
-    options
+    env.MONGO_CREDENTIALS
   );
 })
 .catch((e) => {
