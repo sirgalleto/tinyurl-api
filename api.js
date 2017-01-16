@@ -5,6 +5,13 @@ let express     = require('express')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  console.log('yeah');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 function Api(port, routes) {
   this._router = express.Router();
 
@@ -21,7 +28,7 @@ function Api(port, routes) {
       reject(e);
     }
 
-    resolve(app);    
+    resolve(app);
   });
 
   this._registerRoutes = () => {
