@@ -17,21 +17,13 @@ let UrlController = {
 
     const { name } = req.body;
 
-    View.json.promise(
-      Url.findByName(name)
-      .then((url)=> {
-        if(url) return url;
+    const url = new Url({
+      name: name,
+      clicks: 0,
+      short: uid()
+    });
 
-        const _url = new Url({
-          name: name,
-          clicks: 0,
-          short: uid()
-        });
-
-        return Url.insert(_url);
-      }),
-      res
-    );
+    View.json.promise(Url.insert(url), res);
   },
   update: (req, res) => {
     View.json.promise(
