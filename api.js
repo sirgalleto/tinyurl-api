@@ -26,6 +26,8 @@ function Api(port, routes) {
     catch(e) {
       throw new Error(e);
     }
+
+    return app;
   };
 
   this._registerRoutes = () => {
