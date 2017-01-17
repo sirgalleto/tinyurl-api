@@ -16,7 +16,7 @@ function Api(port, routes) {
 
   app.use('/api', this._router);
 
-  this.start = () => new Promise((resolve, reject) => {
+  this.start = () => {
     try {
       app.listen(port);
       this._registerRoutes();
@@ -24,11 +24,9 @@ function Api(port, routes) {
       console.info(`Api live in 0.0.0.0:${port}`);
     }
     catch(e) {
-      reject(e);
+      throw new Error(e);
     }
-
-    resolve(app);
-  });
+  };
 
   this._registerRoutes = () => {
     routes.forEach(route => {

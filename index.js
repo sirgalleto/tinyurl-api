@@ -7,16 +7,13 @@ const port = process.env.PORT || 8080;
 
 const routes = [
   ...urlRoutes
-]
+];
+
+mongoose.connect(
+  env.MONGO_CREDENTIALS
+);
 
 let api = new Api(port, routes);
+let app = api.start();
 
-api.start()
-.then(() => {
-  mongoose.connect(
-    env.MONGO_CREDENTIALS
-  );
-})
-.catch((e) => {
-  console.error(e);
-});
+module.exports = app;
