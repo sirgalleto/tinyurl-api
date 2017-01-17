@@ -58,8 +58,6 @@ function UrlModel () {
 
   UrlSchema.statics.findByName = function(name) {
     return this.findOne({name: name}).then(url => {
-      if(!url) return Promise.reject(errors.NOT_FOUND);
-
       return url;
     });
   }
