@@ -14,6 +14,29 @@ describe('Url', () => {
   describe('Controller', () => {
     let id;
 
+    const url = {
+      name: 'http://google.com/'
+    };
+
+    const urlUpdated = {
+      name: 'http://facebook.com/'
+    };
+
+    it('POST /urls', () => {
+      return request(app)
+            .post('/api/urls')
+            .send(url)
+            .expect(httpStatus.OK)
+            .then(res => {
+              id = res.body.data._id;
+
+              expect(res.body).to.be.a('object');
+              expect(res.body.success).to.equal(true);
+              expect(res.body.data).to.be.a('object');
+              expect(res.body.data.name).to.equal(url.name);
+            });
+    });
+
     it('GET /urls', () => {
       return request(app)
             .get('/api/urls')
@@ -22,20 +45,6 @@ describe('Url', () => {
               expect(res.body).to.be.a('object');
               expect(res.body.success).to.equal(true);
               expect(res.body.data).to.be.a('array');
-            });
-    });
-
-    it('POST /urls', () => {
-      return request(app)
-            .post('/api/urls')
-            .send({'name': 'http://google.com'})
-            .expect(httpStatus.OK)
-            .then(res => {
-              id = res.body.data._id;
-
-              expect(res.body).to.be.a('object');
-              expect(res.body.success).to.equal(true);
-              expect(res.body.data).to.be.a('object');
             });
     });
 
@@ -53,12 +62,13 @@ describe('Url', () => {
     it('PUT /urls/:id', () => {
       return request(app)
             .put(`/api/urls/${id}`)
-            .send({'name': 'http://facebook.com'})
+            .send(urlUpdated)
             .expect(httpStatus.OK)
             .then( res => {
               expect(res.body).to.be.a('object');
               expect(res.body.success).to.equal(true);
               expect(res.body.data).to.be.a('object');
+              expect(res.body.data.name).to.be.equal(urlUpdated.name);
             });
     });
 
