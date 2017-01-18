@@ -6,7 +6,6 @@ describe('Url', () => {
   ,     httpStatus  = require('http-status-codes')
   ,     app         = require('../index');
 
-
   describe('Model', () => {
 
   });
