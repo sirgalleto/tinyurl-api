@@ -7,7 +7,7 @@ describe('Url', () => {
   ,     app         = require('../index');
 
   describe('Model', () => {
-
+    
   });
 
   describe('Controller', () => {
