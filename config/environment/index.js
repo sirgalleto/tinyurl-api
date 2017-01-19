@@ -20,7 +20,7 @@ let base = {
 
 // Export the config object based on the NODE_ENV
 
-module.exports = function(env) {
+export default function(env) {
   console.info(env);
   return _.merge(base, require('./' + env + '.env.js') || {});
 };
