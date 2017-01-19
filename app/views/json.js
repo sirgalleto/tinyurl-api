@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 let json = {
   promise(q, res) {
