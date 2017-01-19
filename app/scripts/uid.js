@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function uid(len) {
   len = len || 5;
