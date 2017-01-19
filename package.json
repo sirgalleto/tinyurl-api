@@ -4,8 +4,8 @@
   "description": "TinyUrl API ",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec npm run babel-node -- index.js",
-    "dev": "npm run lint && nodemon --exec npm run babel-node -- index.js",
+    "start": "nodemon --exec npm run babel-node -- server.js",
+    "dev": "npm run lint && nodemon --exec npm run babel-node -- server.js",
     "babel-node": "babel-node --presets=es2015",
     "lint": "eslint . --ext .js --ext .jsx --ignore-path .gitignore --ignore-pattern test/*js --cache",
     "test": "./node_modules/.bin/mocha --reporter spec"
