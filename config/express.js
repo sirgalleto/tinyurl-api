@@ -1,3 +1,11 @@
+/*
+ * Express.js configuration
+ */
+
+'use strict';
+
+// Dependencies
+
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
