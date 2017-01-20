@@ -23,4 +23,4 @@ let base = {
 export default function(env) {
   console.info(env);
   return _.merge(base, require('./' + env + '.env.js') || {});
-};
+}
