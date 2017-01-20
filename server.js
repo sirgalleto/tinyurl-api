@@ -23,4 +23,6 @@ subscribeRoutes(app);
 
 app.listen(config.port);
 
+console.info(`Server listening on port: ${config.port}`);
+
 export default app;
