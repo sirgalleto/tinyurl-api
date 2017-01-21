@@ -72,6 +72,16 @@ function UrlModel () {
     });
   }
 
+  UrlSchema.statics.findByShortAndIncrease = function(short) {
+    return this.findOne({short: short})
+              .then(url => {
+                if(url) return Promise.reject(errors.NOT_FOUND);
+
+                url.clicks++;
+                return url.save();
+              });
+  }
+
   return UrlSchema;
 }
 
