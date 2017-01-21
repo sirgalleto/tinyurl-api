@@ -26,7 +26,10 @@ describe('Redirection', () => {
     it('Get /:short', () => {
       return request(app)
       .get(`/${url.short}`)
-      .expect(302);
+      .expect(httpStatus.MOVED_TEMPORARILY)
+      .then(res => {
+        expect(res.headers.location).to.equal(url.name);
+      });
     });
 
   });
