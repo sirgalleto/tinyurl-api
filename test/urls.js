@@ -1,16 +1,19 @@
 'use strict';
 
-describe('Url', () => {
-  const expect      = require('chai').expect
-  ,     request     = require('supertest')
-  ,     httpStatus  = require('http-status-codes')
-  ,     app         = require('../index');
+// Dependencies
 
-  describe('Model', () => {
-    
-  });
+import request    from 'supertest';
+import httpStatus from 'http-status-codes';
+import mongoose   from 'mongoose';
+import { expect } from 'chai';
+
+import app        from '../server';
+import Url        from '../app/models/url';
+
+describe('Url', () => {
 
   describe('Controller', () => {
+
     let id;
 
     const url = {
@@ -20,6 +23,8 @@ describe('Url', () => {
     const urlUpdated = {
       name: 'http://facebook.com/'
     };
+
+    before((done) => mongoose.connection.db.dropDatabase(() => done()));
 
     it('POST /urls', () => {
       return request(app)

@@ -1,5 +1,7 @@
 'use strict';
 
+// Dependencies
+
 import request    from 'supertest';
 import httpStatus from 'http-status-codes';
 import mongoose   from 'mongoose';
