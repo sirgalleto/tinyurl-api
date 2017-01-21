@@ -18,7 +18,8 @@ function UrlModel () {
     },
     clicks: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     }
   });
 
