@@ -1,34 +1,18 @@
-let UrlController = require('../controllers/url');
+'use strict';
 
-module.exports = [
-  {
-    method: 'GET',
-    url: '/urls',
-    action: UrlController.list
-  },
-  {
-    method: 'GET',
-    url: '/urls/:id',
-    action: UrlController.find
-  },
-  {
-    method: 'POST',
-    url: '/urls',
-    action: UrlController.create
-  },
-  {
-    method: 'PUT',
-    url: '/urls/:id',
-    action: UrlController.update
-  },
-  {
-    method: 'DELETE',
-    url: '/urls/:id',
-    action: UrlController.delete
-  },
-  {
-    method: 'GET',
-    url: '/urls/findByShort/:short',
-    action: UrlController.findByShort
-  }
-];
+// Dependencies
+
+import express from 'express';
+
+import Url            from '../models/url';
+import UrlController  from '../controllers/url';
+
+const router = express.Router();
+
+router.get('/urls', UrlController.list);
+router.get('/urls/:id', UrlController.find);
+router.post('/urls', UrlController.create);
+router.put('/urls/:id', UrlController.update);
+router.delete('/urls/:id', UrlController.delete);
+
+export default router;
